@@ -5,7 +5,7 @@
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .centered{
@@ -30,28 +30,30 @@ h2 {
 }
 
 .enemybox {
-    height: 200px;
+    height: 240px;
     padding-top: 20px;
     text-align: center;
 }
 
 .enemybox img {
-    height: 50%;
+    height: 55%;
     margin-top: 10px;
 }
 
 .textbox {
-    height: 80px;
+    height: 90px;
     margin: 0 5px;
     padding: 5px;
     border-top: solid #000 2px;
     border-bottom: solid #000 2px;
     text-align: center;
+    font-size: 18px;
 }
 
 .statbox {
-    height: 80px;
+    height: 90px;
     flex-direction: column;
+    font-size: 18px;
 }
 
 .btnbox {
@@ -62,7 +64,7 @@ h2 {
 
 .btn-move,
 .btn-prog {
-    width: 80px;
+    width: 90px;
     margin-right: 10px;
 }
 
