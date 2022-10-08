@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    margin: 0 auto;
+    height: 100vh;
+    background: #ddd;
+}
+
+#start-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+}
+
+.enemybox {
+    height: 200px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.enemybox img {
+    height: 50%;
+    margin-top: 10px;
+}
+
+.textbox {
+    height: 80px;
+    margin: 0 5px;
+    padding: 5px;
+    border-top: solid #000 2px;
+    border-bottom: solid #000 2px;
+    text-align: center;
+}
+
+.statbox {
+    height: 80px;
+    flex-direction: column;
+}
+
+.btnbox {
+    padding-top: 20px;
+}
+
+
+
+.btn-move,
+.btn-prog {
+    width: 80px;
+    margin-right: 10px;
+}
+
+.btnbox .btn-move:nth-child(3),
+.btn-prog:last-of-type{
+    margin-right: 0;
+}
+
+.title{
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.btn {
+    padding: .5em 0;
+    border: none;
+    font-size: 18px;
+    letter-spacing: -.5px;
+}
+
+.btn-start-screen,
+#break-btn {
+    width: 120px;
+}
+
+.btn-red{
+    background: #f55;
+}
+
+.btn-green{
+    background: #3a3;
+}
+
+.btn-blue {
+    background: #55f;
+}
+
+.btn-red,
+.btn-green,
+.btn-blue {
+    color: #fff;
+}

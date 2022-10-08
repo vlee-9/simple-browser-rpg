@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>voks rpg</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <section id="start-screen" class="mt-5">
+            <!-- <img id="game-title" src=""> -->
+            <h1 class="title">Sorrow Guard</h1>
+            <button id="startgame-btn" class="btn btn-start-screen" onclick="startGame()">Start Game</button>
+            <br>
+            <button id="tut-btn" class="btn btn-start-screen">Tutorial</button>
+        </section>
+
+        <section class="enemybox" id="enemy-box">
+            <h2 id="enemy-name"></h2>
+            <p id="enemy-info"> Enemy Hp: <span id="enemy-hp"></span></p>
+            <img id="enemy-image" src="">
+            <div id="lvl-dia">
+                <p>You leveled up! <b>HP+50 MP+20</b> !</p>
+            </div>
+        </section>
+
+        <section class="textbox centered" id="text-box">
+            <p id="dia-box"></p>
+
+        </section>
+
+        <section class="statbox centered" id="statbox-player">
+            <div>
+                <p>HP: <span id="hp"></span> / <span id="hp-cap"></span> </p>
+
+                <p>MP: <span id="mp"></span> / <span id="mp-cap"></span> </p>
+
+                <p>Drinks: <span id="drink-num"></span> </p>
+            </div>
+        </section>
+
+        <section class="btnbox centered" id="button-el">
+            <button class="btn btn-move btn-red" id="attack-btn" onclick="attack()">Attack</button>
+
+            <button class="btn btn-move btn-green" id="defend-btn" onclick="defend()">Defend</button>
+
+            <button class="btn btn-move btn-blue" id="magic-btn" onclick="magic()">Magic</button>
+
+            <button class="btn btn-prog" id="next-btn" onclick="renderGame()">Next..</button>
+
+            <button class="btn" id="break-btn" onclick="breakPhase()">Forward..</button>
+
+            <button class="btn btn-prog" id="start-btn" onclick="newRound()">Start!</button>
+
+            <button class="btn btn-prog" id="drink-btn" onclick="drink()">Drink</button>
+        </section>
+    </div>
+
+    <script src="js/scripts.js"></script>
+
+</body>
+
+</html>
