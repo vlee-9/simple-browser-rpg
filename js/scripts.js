@@ -7,6 +7,7 @@ let playerDrink = document.getElementById("drink-num")
 let enemyInfo = document.getElementById("enemy-info")
 let enemyHp = document.getElementById("enemy-hp")
 let enemyName = document.getElementById("enemy-name")
+let enemyImage = document.getElementById("enemy-image")
 
 let attackBtn = document.getElementById("attack-btn")
 let defendBtn = document.getElementById("defend-btn")
@@ -16,6 +17,7 @@ let drinkBtn = document.getElementById("drink-btn")
 let nextBtn = document.getElementById("next-btn")
 let startBtn = document.getElementById("start-btn")
 let breakBtn = document.getElementById("break-btn")
+let resetBtn = document.getElementById("reset-btn")
 
 let diaBox = document.getElementById("dia-box")
 let levelDia = document.getElementById("lvl-dia")
@@ -124,7 +126,7 @@ function monsterReset() {
                 dia: "*gross slithering intensifies*",
                 exp: 2,
             },
-            
+
         ]
     }
     else if (player.Lvl === 2) {
@@ -177,7 +179,7 @@ function monsterReset() {
         ]
 
     }
-    else if (player.Lvl === 3){ 
+    else if (player.Lvl === 3) {
         monsters = [
             {
                 name: "Evil Eye",
@@ -403,8 +405,8 @@ function newRound() {
 
     enemyName.textContent = enemy.name
     enemyHp.textContent = enemy.hP
-    enemyImage = enemy.image
-    document.getElementById("enemy-image").src = enemy.image
+    enemyImage.src = enemy.image
+    enemyImage.style.display = ""
     playerHp.textContent = player.hP
     playerHpCap.textContent = playerLevelCap.hP
     playerMp.textContent = player.mP
@@ -456,24 +458,41 @@ function diaPhaseA() {
         diaBox.textContent = "The enemy was felled!"
 
         breakBtn.style.display = ""
-        document.getElementById("enemy-image").src = ""
+        enemyImage.style.display = "none"
         lootChance()
         expUp()
 
     }
 
     else {
-        if (enemyAct === "attack") {
-            diaBox.textContent = "The enemy attacked, dealing " + enemy.attack + " damage!" + " You delt " + player.attack + " damage!"
-        }
+        if (player.hP > 0) {
+            if (enemyAct === "attack") {
+                diaBox.textContent = "The enemy attacked, dealing " + enemy.attack + " damage!" + " You delt " + player.attack + " damage!"
+            }
 
-        else if (enemyAct === "defend") {
-            diaBox.textContent = "You attacked...but the enemy defended! You took 5 damage.."
+            else if (enemyAct === "defend") {
+                diaBox.textContent = "You attacked...but the enemy defended! You took 5 damage.."
+            }
+            else if (enemyAct === "magic") {
+                diaBox.textContent = "The emey used Magic, but you attacked! You dealt " + player.attack + " damage and took " + Math.floor(enemy.magic / 2) + " damage!"
+            }
+            nextBtn.style.display = ""
         }
-        else if (enemyAct === "magic") {
-            diaBox.textContent = "The emey used Magic, but you attacked! You dealt " + player.attack + " damage and took " + Math.floor(enemy.magic / 2) + " damage!"
+        else {
+            player.hP = 0
+            playerHp.textContent = player.hP
+            resetBtn.style.display = ""
+            if (enemyAct === "attack") {
+                diaBox.textContent = "The enemy attacked, dealing " + enemy.attack + " damage!" + " Your health reached 0. GAME OVER."
+            }
+
+            else if (enemyAct === "defend") {
+                diaBox.textContent = "You attacked...but the enemy defended! You took 5 damage.. You have no more HP. GAME OVER."
+            }
+            else if (enemyAct === "magic") {
+                diaBox.textContent = "The enemy used Magic, you took " + Math.floor(enemy.magic / 2) + " damage!Your health is 0. GAME OVER."
+            }
         }
-        nextBtn.style.display = ""
     }
 
 
@@ -493,22 +512,31 @@ function diaPhaseD() {
         enemyHp.textContent = enemy.hP
         diaBox.textContent = "The enemy was felled!"
         breakBtn.style.display = ""
-        document.getElementById("enemy-image").src = ""
+        enemyImage.style.display = "none"
         lootChance()
         expUp()
     }
 
     else {
-        if (enemyAct === "attack") {
-            diaBox.textContent = `The enemy Attacked, but you Defended, dealing ${player.counter} counter damage!`
+        if (player.hP > 0) {
+            if (enemyAct === "attack") {
+                diaBox.textContent = `The enemy Attacked, but you Defended, dealing ${player.counter} counter damage!`
+            }
+            else if (enemyAct === "defend") {
+                diaBox.textContent = "You both defended! But nothing happened..."
+            }
+            else if (enemyAct === "magic") {
+                diaBox.textContent = "You defended...but the enemy used Magic, dealing " + enemy.magic + " damage!"
+            }
+            nextBtn.style.display = ""
         }
-        else if (enemyAct === "defend") {
-            diaBox.textContent = "You both defended! But nothing happened..."
+        else {
+            player.hP = 0
+            playerHp.textContent = player.hP
+            resetBtn.style.display = ""
+            diaBox.textContent = "You defended...but the enemy used Magic, dealing " + enemy.magic + " damage! Your health is 0. GAME OVER."
         }
-        else if (enemyAct === "magic") {
-            diaBox.textContent = "You defended...but the enemy used Magic, dealing " + enemy.magic + " damage!"
-        }
-        nextBtn.style.display = ""
+
     }
 
 }
@@ -534,36 +562,88 @@ function diaPhaseM() {
         enemyHp.textContent = enemy.hP
         diaBox.textContent = "The enemy was felled!"
         breakBtn.style.display = ""
-        document.getElementById("enemy-image").src = ""
+        enemyImage.style.display = "none"
         lootChance()
         expUp()
 
     }
 
     else {
-        if (enemyAct === "attack") {
-            diaBox.textContent = "The enemy attacked, interupting your spell! You took " + enemy.attack + " damage and dealt " + Math.floor(player.magic / 2) + " damage!"
+        if (player.hP > 0) {
+            if (enemyAct === "attack") {
+                diaBox.textContent = "The enemy attacked, interupting your spell! You took " + enemy.attack + " damage and dealt " + Math.floor(player.magic / 2) + " damage!"
+            }
+
+            else if (enemyAct === "defend") {
+                let x = player.magic + Math.floor(player.magic / 3)
+                diaBox.textContent = "The enemy defended but you used Magic, dealing " + x + " damage!"
+            }
+
+            else if (enemyAct === "magic") {
+                diaBox.textContent = "You both cast a spell! " + " You took " + enemy.magic + " damage and dealt " + player.magic + " damage!"
+            }
+            nextBtn.style.display = ""
+        }
+        else {
+            player.hP = 0
+            playerHp.textContent = player.hP
+            resetBtn.style.display = ""
+            if (enemyAct === "attack") {
+                diaBox.textContent = "The enemy attacked, interupting your spell! You took " + enemy.attack + " damage! Your health is 0. GAME OVER."
+            }
+
+            else if (enemyAct === "magic") {
+                diaBox.textContent = "You both cast a spell! " + " You took " + enemy.magic + " damage! Your health is 0. GAME OVER."
+            }
         }
 
-        else if (enemyAct === "defend") {
-            let x = player.magic + Math.floor(player.magic / 3)
-            diaBox.textContent = "The enemy defended but you used Magic, dealing " + x + " damage!"
-        }
-
-        else if (enemyAct === "magic") {
-            diaBox.textContent = "You both cast a spell! " + " You took " + enemy.magic + " damage and dealt " + player.magic + " damage!"
-        }
-        nextBtn.style.display = ""
     }
 
 
 }
 
-function startGame(){
+function resetGame() {
+    enemyInfo.style.display = "none"
+    levelDia.style.display = "none"
+    resetBtn.style.display = "none"
+
+    player = {
+        hP: 100,
+        mP: 50,
+        Lvl: 1,
+        attack: 15,
+        counter: 15,
+        magic: 15,
+        drink: 1,
+    }
+    playerLevelCap = {
+        hP: 100,
+        mP: 50,
+        attack: 15,
+        exp: 0,
+    }
+    monsterIdCheck = []
+
+    startGame()
+    startBtn.style.display = ""
+    enemyImage.style.display = "none"
+    enemyName.textContent = ''
+    playerHp.textContent = player.hP
+    playerMp.textContent = player.mP
+}
+
+function startGame() {
+    statboxPlayer.style.display = ""
     buttonsAll.style.display = ""
     textBox.style.display = ""
     startScreen.style.display = "none"
     diaBox.textContent = "There are monsters about, are you ready?"
+    playerHp.textContent = player.hP
+    playerMp.textContent = player.mP
+    playerDrink.textContent = player.drink
+    playerDrink.textContent = player.drink
+    playerHpCap.textContent = playerLevelCap.hP
+    playerMpCap.textContent = playerLevelCap.mP
 }
 
 
@@ -573,6 +653,7 @@ textBox.style.display = "none"
 statboxPlayer.style.display = "none"
 
 nextBtn.style.display = "none"
+resetBtn.style.display = "none"
 breakBtn.style.display = "none"
 attackBtn.style.display = "none"
 defendBtn.style.display = "none"
