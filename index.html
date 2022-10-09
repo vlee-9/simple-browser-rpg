@@ -13,8 +13,9 @@
 
 <body>
 
-    <div class="container">
-        <section id="start-screen" class="mt-5">
+    <div class="gamebox">
+
+        <section id="start-screen">
             <!-- <img id="game-title" src=""> -->
             <h1 class="title">Sorrow Guard</h1>
             <button id="startgame-btn" class="btn btn-start-screen" onclick="startGame()">Start Game</button>
@@ -31,36 +32,43 @@
             </div>
         </section>
 
-        <section class="textbox centered" id="text-box">
-            <p id="dia-box"></p>
+        <div class="playerbox">
 
-        </section>
 
-        <section class="statbox centered" id="statbox-player">
-            <div>
-                <p>HP: <span id="hp"></span> / <span id="hp-cap"></span> </p>
 
-                <p>MP: <span id="mp"></span> / <span id="mp-cap"></span> </p>
+            <section class="textbox centered" id="text-box">
+                <p id="dia-box"></p>
 
-                <p>Drinks: <span id="drink-num"></span> </p>
-            </div>
-        </section>
+            </section>
 
-        <section class="btnbox centered" id="button-el">
-            <button class="btn btn-move btn-red" id="attack-btn" onclick="attack()">Attack</button>
+            <section class="statbox centered" id="statbox-player">
+                <div>
+                    <p>HP: <span id="hp"></span> / <span id="hp-cap"></span> </p>
 
-            <button class="btn btn-move btn-green" id="defend-btn" onclick="defend()">Defend</button>
+                    <p>MP: <span id="mp"></span> / <span id="mp-cap"></span> </p>
 
-            <button class="btn btn-move btn-blue" id="magic-btn" onclick="magic()">Magic</button>
+                    <p>Drinks: <span id="drink-num"></span> </p>
+                </div>
+            </section>
 
-            <button class="btn btn-prog" id="next-btn" onclick="renderGame()">Next..</button>
+            <section class="btnbox centered" id="button-el">
+                <button class="btn btn-move btn-red" id="attack-btn" onclick="attack()">Attack</button>
 
-            <button class="btn" id="break-btn" onclick="breakPhase()">Forward..</button>
+                <button class="btn btn-move btn-green" id="defend-btn" onclick="defend()">Defend</button>
 
-            <button class="btn btn-prog" id="start-btn" onclick="newRound()">Start!</button>
+                <button class="btn btn-move btn-blue" id="magic-btn" onclick="magic()">Magic</button>
 
-            <button class="btn btn-prog" id="drink-btn" onclick="drink()">Drink</button>
-        </section>
+                <button class="btn btn-prog" id="next-btn" onclick="renderGame()">Next..</button>
+
+                <button class="btn" id="break-btn" onclick="breakPhase()">Forward..</button>
+
+                <button class="btn btn-prog" id="start-btn" onclick="newRound()">Start!</button>
+
+                <button class="btn btn-prog" id="drink-btn" onclick="drink()">Drink</button>
+
+                <button class="btn btn-prog" id="reset-btn" onclick="resetGame()">Retry</button>
+            </section>
+        </div>
     </div>
 
     <script src="js/scripts.js"></script>

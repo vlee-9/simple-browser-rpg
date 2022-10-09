@@ -4,20 +4,23 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+body {
+    background: #ccc;
+}
+
 h2 {
     font-size: 25px;
 }
 
-.centered{
+.centered {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.container{
+.gamebox {
     margin: 0 auto;
     height: 100vh;
-    background: #ddd;
 }
 
 #start-screen {
@@ -25,7 +28,9 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    position: absolute;
+    background: #ccc;
+    width: 100%;
     height: 100%;
 }
 
@@ -33,11 +38,13 @@ h2 {
     height: 240px;
     padding-top: 20px;
     text-align: center;
+    font-size: 20px;
 }
 
 .enemybox img {
     height: 55%;
     margin-top: 10px;
+    outline: none;
 }
 
 .textbox {
@@ -69,11 +76,11 @@ h2 {
 }
 
 .btnbox .btn-move:nth-child(3),
-.btn-prog:last-of-type{
+.btn-prog:last-of-type {
     margin-right: 0;
 }
 
-.title{
+.title {
     margin-bottom: 10px;
     text-decoration: underline;
 }
@@ -83,6 +90,11 @@ h2 {
     border: none;
     font-size: 18px;
     letter-spacing: -.5px;
+    color: #000;
+    background: #f9f9f9;
+}
+.btn:active{
+    background: #e5e5e5;
 }
 
 .btn-start-screen,
@@ -90,20 +102,80 @@ h2 {
     width: 120px;
 }
 
-.btn-red{
+.btn-red {
     background: #f55;
 }
+.btn-red:active{
+    background: #c33;
+}
 
-.btn-green{
+.btn-green {
     background: #3a3;
+}
+.btn-green:active {
+    background: #282;
 }
 
 .btn-blue {
     background: #55f;
+}
+.btn-blue:active{
+    background: #44c;
 }
 
 .btn-red,
 .btn-green,
 .btn-blue {
     color: #fff;
+}
+
+@media (min-width: 660px){
+    #start-screen {
+        max-height: 526px;
+        max-width: 696px;
+        border-radius: 10px;
+    }
+
+    .gamebox,
+    .playerbox {
+        display: flex;
+    }
+    
+    .gamebox {     
+        max-width: 700px;
+        max-height: 530px;
+        margin-top: 20px;
+        border: solid 2px #000;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .playerbox {
+        flex-direction: column;
+        justify-content: center;
+        width: 55%;
+        border-left: solid 2px;
+    }
+
+    .enemybox {
+        width: 45%;
+        height: 100%;
+        background: #e8e8e8;
+    }
+
+    .enemybox img {
+        max-width: 220px;
+        object-fit: scale-down;
+    }
+
+    .statbox {
+        order: -1;
+        height: 210px;
+        font-size: 20px;
+    }
+
+    .btnbox {
+        height: 210px;
+        align-items: flex-start;
+    }
 }
