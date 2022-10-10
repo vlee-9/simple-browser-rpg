@@ -1,33 +1,38 @@
-let playerHp = document.getElementById("hp")
-let playerHpCap = document.getElementById("hp-cap")
-let playerMp = document.getElementById("mp")
-let playerMpCap = document.getElementById("mp-cap")
-let playerDrink = document.getElementById("drink-num")
+const playerHp = document.getElementById("hp")
+const playerHpCap = document.getElementById("hp-cap")
+const playerMp = document.getElementById("mp")
+const playerMpCap = document.getElementById("mp-cap")
+const playerDrink = document.getElementById("drink-num")
 
-let enemyInfo = document.getElementById("enemy-info")
-let enemyHp = document.getElementById("enemy-hp")
-let enemyName = document.getElementById("enemy-name")
-let enemyImage = document.getElementById("enemy-image")
+const enemyInfo = document.getElementById("enemy-info")
+const enemyHp = document.getElementById("enemy-hp")
+const enemyName = document.getElementById("enemy-name")
+const enemyImage = document.getElementById("enemy-image")
 
-let attackBtn = document.getElementById("attack-btn")
-let defendBtn = document.getElementById("defend-btn")
-let magicBtn = document.getElementById("magic-btn")
-let drinkBtn = document.getElementById("drink-btn")
+const attackBtn = document.getElementById("attack-btn")
+const defendBtn = document.getElementById("defend-btn")
+const magicBtn = document.getElementById("magic-btn")
+const drinkBtn = document.getElementById("drink-btn")
 
-let nextBtn = document.getElementById("next-btn")
-let startBtn = document.getElementById("start-btn")
-let breakBtn = document.getElementById("break-btn")
-let resetBtn = document.getElementById("reset-btn")
+const nextBtn = document.getElementById("next-btn")
+const startBtn = document.getElementById("start-btn")
+const breakBtn = document.getElementById("break-btn")
+const resetBtn = document.getElementById("reset-btn")
 
-let diaBox = document.getElementById("dia-box")
-let levelDia = document.getElementById("lvl-dia")
+const diaBox = document.getElementById("dia-box")
+const levelDia = document.getElementById("lvl-dia")
 
-let enemyBox = document.getElementById("enemy-box")
-let textBox = document.getElementById("text-box")
-let statboxPlayer = document.getElementById("statbox-player")
-let buttonsAll = document.getElementById("button-el")
+const enemyBox = document.getElementById("enemy-box")
+const textBox = document.getElementById("text-box")
+const statboxPlayer = document.getElementById("statbox-player")
+const buttonsAll = document.getElementById("button-el")
 
-let startScreen = document.getElementById("start-screen")
+const startScreen = document.getElementById("start-screen")
+const tutScreen = document.getElementById("tut-screen")
+const tutBtnOpen = document.getElementById("tut-btn-open")
+const tutBtnClose = document.getElementById("tut-btn-close")
+
+const quitBtn = document.getElementById("quit-btn")
 
 
 
@@ -628,13 +633,12 @@ function resetGame() {
     startBtn.style.display = ""
     enemyImage.style.display = "none"
     enemyName.textContent = ''
-    playerHp.textContent = player.hP
-    playerMp.textContent = player.mP
 }
 
 function startGame() {
     statboxPlayer.style.display = ""
     buttonsAll.style.display = ""
+    quitBtn.style.display = ''
     textBox.style.display = ""
     startScreen.style.display = "none"
     diaBox.textContent = "There are monsters about, are you ready?"
@@ -646,26 +650,65 @@ function startGame() {
     playerMpCap.textContent = playerLevelCap.mP
 }
 
+tutBtnOpen.addEventListener("click", function () {
+    tutScreen.style.display = 'flex'
+})
 
+tutBtnClose.addEventListener("click", function () {
+    tutScreen.style.display = 'none'
+})
 
-buttonsAll.style.display = "none"
-textBox.style.display = "none"
-statboxPlayer.style.display = "none"
+quitBtn.addEventListener("click", function () {
+    startScreen.style.display = ""
+    startBtn.style.display = ""
+    setUp()
 
-nextBtn.style.display = "none"
-resetBtn.style.display = "none"
-breakBtn.style.display = "none"
-attackBtn.style.display = "none"
-defendBtn.style.display = "none"
-magicBtn.style.display = "none"
-drinkBtn.style.display = "none"
+    player = {
+        hP: 100,
+        mP: 50,
+        Lvl: 1,
+        attack: 15,
+        counter: 15,
+        magic: 15,
+        drink: 1,
+    }
+    playerLevelCap = {
+        hP: 100,
+        mP: 50,
+        attack: 15,
+        exp: 0,
+    }
+    monsterIdCheck = []
+    enemyImage.style.display = "none"
+    enemyName.textContent = ''
+})
 
-levelDia.style.display = "none"
-enemyInfo.style.display = "none"
+function setUp() {
+    buttonsAll.style.display = "none"
+    textBox.style.display = "none"
+    statboxPlayer.style.display = "none"
 
+    nextBtn.style.display = "none"
+    resetBtn.style.display = "none"
+    breakBtn.style.display = "none"
+    quitBtn.style.display = "none"
+    attackBtn.style.display = "none"
+    defendBtn.style.display = "none"
+    magicBtn.style.display = "none"
+    drinkBtn.style.display = "none"
 
-//todo - add start game screen and a game over screen when player.hP = 0
+    levelDia.style.display = "none"
+    enemyInfo.style.display = "none"
 
-//todo - add tutorial on start game screen.
+    enemyAct = ""
+    enemy = {}
+    foundEnemy = ""
+    monsters = []
+    monsterIdCheck = []
+}
+
+setUp()
+
+//refactor getRandomMonster() to include propper filter method
 
 //optional todo - let player decide witch battle stat to lvl up.
