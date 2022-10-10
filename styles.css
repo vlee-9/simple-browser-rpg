@@ -4,12 +4,20 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
-body {
+body,
+.startscreen,
+.tutscreen {
     background: #ccc;
 }
 
 h2 {
     font-size: 25px;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
 }
 
 .centered {
@@ -21,17 +29,39 @@ h2 {
 .gamebox {
     margin: 0 auto;
     height: 100vh;
+    position: relative;
 }
 
-#start-screen {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    background: #ccc;
+.startscreen,
+.tutscreen {
     width: 100%;
     height: 100%;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.startscreen {  
+    display: flex; 
+    align-items: center; 
+}
+
+.tutscreen {
+    display: none;
+    padding: 10px;
+    line-height: 1.3rem;
+    align-items: center;
+}
+
+.tutscreen p,
+.tutscreen div {
+    margin-bottom: 1em;
+    
+}
+
+.tutscreen .btn {
+    margin: 0 auto;
 }
 
 .enemybox {
@@ -69,6 +99,32 @@ h2 {
 
 
 
+.btn {
+    height: 40px;
+    padding: .5em 0;
+    border: none;
+    font-size: 18px;
+    letter-spacing: -.5px;
+    color: #000;
+    background: #f9f9f9;
+    cursor: pointer;
+}
+.btn:active{
+    background: #e5e5e5;
+}
+
+.btnmini{
+    background: none;
+    width: 80px;
+    position: absolute;
+    top: 0;
+    bottom: 100%;
+}
+
+.btnmini:hover{
+    border: dotted #000 2px;
+}
+
 .btn-move,
 .btn-prog {
     width: 90px;
@@ -83,18 +139,6 @@ h2 {
 .title {
     margin-bottom: 10px;
     text-decoration: underline;
-}
-
-.btn {
-    padding: .5em 0;
-    border: none;
-    font-size: 18px;
-    letter-spacing: -.5px;
-    color: #000;
-    background: #f9f9f9;
-}
-.btn:active{
-    background: #e5e5e5;
 }
 
 .btn-start-screen,
@@ -130,7 +174,8 @@ h2 {
 }
 
 @media (min-width: 660px){
-    #start-screen {
+    .startscreen,
+    .tutscreen {
         max-height: 526px;
         max-width: 696px;
         border-radius: 10px;

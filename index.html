@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <title>voks rpg</title>
 </head>
 
@@ -15,12 +14,28 @@
 
     <div class="gamebox">
 
-        <section id="start-screen">
+        <section class="startscreen" id="start-screen">
             <!-- <img id="game-title" src=""> -->
             <h1 class="title">Sorrow Guard</h1>
             <button id="startgame-btn" class="btn btn-start-screen" onclick="startGame()">Start Game</button>
             <br>
-            <button id="tut-btn" class="btn btn-start-screen">Tutorial</button>
+            <button id="tut-btn-open" class="btn btn-start-screen">Tutorial</button>
+        </section>
+
+        <section class="tutscreen" id="tut-screen">
+            <p><b>Sorrow Gaurd</b> is a fairly simple rock-papper-scissors rpg. Each monster has a different set of moves and some use certain ones more than others. You might die a lot, so remember to study each monster's behaivior as you move forward!</p>
+
+            <p>As you progress, you'll <b>Lvl Up!</b> increasing your Hp and Mp. The enemies will change as well, <i>tougher</i>...<i>trickier</i></p>
+
+            <div>
+                <h3><b>Heres how it works:</b></h3>
+                <ul>
+                    <li><span style="color: red;">Attack</span> beats <span style="color: blue;">Magic</span></li>
+                    <li><span style="color: green;">Defend</span> beats <span style="color: red;">Attack</span></li>
+                    <li><span style="color: blue;">Magic</span> beats <span style="color: green;">Defend</span></li>
+                </ul>
+            </div>
+            <button class="btn btn-start-screen" id="tut-btn-close">close</button>
         </section>
 
         <section class="enemybox" id="enemy-box">
@@ -33,9 +48,6 @@
         </section>
 
         <div class="playerbox">
-
-
-
             <section class="textbox centered" id="text-box">
                 <p id="dia-box"></p>
 
@@ -67,7 +79,9 @@
                 <button class="btn btn-prog" id="drink-btn" onclick="drink()">Drink</button>
 
                 <button class="btn btn-prog" id="reset-btn" onclick="resetGame()">Retry</button>
+                
             </section>
+            <button class="btn btnmini" id="quit-btn">Quit</button>
         </div>
     </div>
 
