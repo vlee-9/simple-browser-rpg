@@ -227,7 +227,7 @@ function lootChance() {
     else { playerDrink.textContent = player.drink }
 }
 
-
+//an attempt to create a filter function before i knew .filter() existed
 function getRandomMonster() {
     let x = ""
     foundEnemy = monsterIdCheck.find(el => el === enemy.name)
@@ -236,28 +236,28 @@ function getRandomMonster() {
     if (monsterIdCheck.length >= 1 && foundEnemy === enemy.name) {
         if (monsters.length === monsterIdCheck.length) {
             monsterIdCheck = [enemy.name]
-            console.log(monsterIdCheck + " mIdC cleared")
+            // console.log(monsterIdCheck + " mIdC cleared")
 
             for (foundEnemy = foundEnemy; foundEnemy === enemy.name;) {
                 x = Math.floor(Math.random() * monsters.length)
                 enemy = monsters[x]
                 foundEnemy = monsterIdCheck.find(el => el === enemy.name)
-                console.log("enemy was switched")
+                // console.log("enemy was switched")
             }
 
             monsterIdCheck.pop()
             monsterIdCheck.push(enemy.name)
-            console.log(" Id Check was popped, enemy was pushed after switch")
+            // console.log(" Id Check was popped, enemy was pushed after switch")
         }
         else {
             for (foundEnemy = foundEnemy; foundEnemy === enemy.name;) {
                 x = Math.floor(Math.random() * monsters.length)
                 enemy = monsters[x]
                 foundEnemy = monsterIdCheck.find(el => el === enemy.name)
-                console.log("enemy was switched")
+                // console.log("enemy was switched")
             }
             monsterIdCheck.push(enemy.name)
-            console.log("enemy was pushed after switch")
+            // console.log("enemy was pushed after switch")
         }
     }
     else {
@@ -265,12 +265,10 @@ function getRandomMonster() {
         enemy = monsters[x]
         foundEnemy = monsterIdCheck.find(el => el === enemy.name)
         monsterIdCheck.push(enemy.name)
-        console.log("enemy was pushed")
+        // console.log("enemy was pushed")
     }
     console.log("end gRM()")
     console.log(monsterIdCheck)
-
-
 }
 
 
@@ -290,7 +288,6 @@ function getEnemeyDia() {
 }
 
 // ACTION Functions
-
 function mpUp() {
     if (player.mP < playerLevelCap.mP) {
         player.mP += 5
@@ -708,7 +705,3 @@ function setUp() {
 }
 
 setUp()
-
-//refactor getRandomMonster() to include propper filter method
-
-//optional todo - let player decide witch battle stat to lvl up.
